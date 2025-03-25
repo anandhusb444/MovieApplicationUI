@@ -22,20 +22,19 @@ const NavBar = () => {
             >
             </input>
         </div>
-        <div className='text-white relative left-90 p-2 text-sm font-mono'>
+        <div className='text-white relative left-90 p-2 hover:-translate-y-1 hover:text-[#ffd700] transition-transform duration-300 text-sm font-mono'>
             About
         </div>
-        <div className='text-white relative left-90 p-2 text-sm font-mono'>
+        <div className='text-white relative left-90 p-2 hover:-translate-y-1 hover:text-[#ffd700] transition-transform duration-300 text-sm font-mono'>
             Teams
         </div>
-        <div className='text-white relative left-90 p-2 text-sm font-mono'>
+        <div className='text-white relative left-90 p-2 hover:-translate-y-1 hover:text-[#ffd700] transition-transform duration-300 text-sm font-mono'>
           Fanart
         </div>
-        <div className='text-white relative left-90 p-2 hover:-translate-y-1 transition-transform duration-300'>
+        <div className='text-white relative left-90 p-1 hover:-translate-y-1 hover:text-[#ffd700] transition-transform duration-300'>
           <span className='font-mono text-sm '>
               News
           </span>
-
         </div>
         <div className='relative left-100 p-0.5'>
             <button className='bg-white rounded-4xl border text-[#7AB41D] w-28 h-9 font-light' >

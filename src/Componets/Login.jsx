@@ -19,17 +19,17 @@ function Login() {
             
             <div className='w-96 h-80 relative left-64 bottom-44'>
               <p className='font-extrabold text-[#0C270C] relative left-24 top-8'>Sign Up to Movie Kona </p>
-              <p className='relative top-24 left-7.5 '>Name</p>
-              <input className='w-40 h-7 relative top-24 left-6 bg-[#BEE8D5] rounded-3xl'></input>
-              <p className='absolute top-30 left-53'>UserName</p>
-              <input className='w-40 h-7 relative top-24 left-11  bg-[#BEE8D5] rounded-3xl'></input>
-              <p className='absolute top-43 left-8'>Email</p>
-              <input className='w-86 h-7 relative top-30 left-6  bg-[#BEE8D5] rounded-3xl'></input>
-              <p className='absolute top-56 left-8'>password</p>
-              <input className='w-86 h-7 relative top-36 left-6  bg-[#BEE8D5] rounded-3xl'></input>
-              <input type='checkbox' className='relative top-50 right-78'></input>
-              <span className='relative font-light top-43 left-14'>Creating an account your ok with the terms and contintion<br/> that i mention,service privacy policy</span>
-
+              <p className='relative top-15 left-7.5 '>Name</p>
+              <input className='w-40 h-7 relative top-15 left-6 bg-[#BEE8D5] rounded-3xl'></input>
+              <p className='absolute top-21 left-53'>UserName</p>
+              <input className='w-40 h-7 relative top-15 left-11  bg-[#BEE8D5] rounded-3xl'></input>
+              <p className='absolute top-36 left-8'>Email</p>
+              <input className='w-86 h-7 relative top-23 left-6  bg-[#BEE8D5] rounded-3xl'></input>
+              <p className='absolute top-51 left-8'>password</p>
+              <input className='w-86 h-7 relative top-31 left-6  bg-[#BEE8D5] rounded-3xl'></input>
+              <input type='checkbox' className='relative top-44 right-79'></input>
+              <span className='relative font-light top-37 left-12'>Creating an account your ok with the terms and contintion<br/> that i mention,service privacy policy</span>
+              <button className='bg-[#0C270C] w-25 h-7 rounded-3xl relative top-48 left-14 text-white '>SIGN IN</button>
 
             </div>
 

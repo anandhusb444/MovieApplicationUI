@@ -1,45 +1,100 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+const schema = yup.object().shape({
+  userName: yup.string().required("Enter your name"),
+  userEmail: yup.string().email("Invalid email").required("Enter your email"),
+  password: yup.string().min(8, "Password must be at least 8 characters").required("Enter your password"),
+});
 
 function Login() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
 
+  const onSubmit = async (data) => {
+    try
+    {
+      console.log(data);
+      const respones = await fetch("https://localhost:7203/api/users/register",{
+        method : "POST",
+        headers : {"content-Type" : "application/json",},
+        body : JSON.stringify(data),
+      });
+
+      
+
+      if(respones.ok)
+      {
+        const result = await respones.json();
+        console.log("sucess", result);
+      }
+      else
+      {
+        const errorResult = await respones.json();
+        console.log("error", errorResult);
+      }
+    }
+    catch(err)
+    {
+      
+      console.error("Network error",err);
+    }
+    //console.log("Form Submitted:", data);
+  };
 
   return (
-    <>
-      <div className='mainDiv flex  items-center justify-center h-screen bg-[#E1DFEA]'>
-        <div className='childDiv  w-full max-w-170 h-100 flex items-center justify-center  rounded-2xl bg-[#0C270C]'>
-          <div className='child1Div w-[450px] h-100 rounded-2xl bg-white relative left-[220px]'>
-
+    <div className="flex items-center justify-center min-h-screen bg-[#E1DFEA]">
+      <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-sm">
+        <h2 className="text-2xl font-semibold text-center text-[#0C270C] mb-6">Register to Movie Kona</h2>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          {/* Name */}
+          <div>
+            <input
+              type="text"
+              placeholder="Name"
+              {...register("userName")}
+              className="w-full px-4 py-2 bg-[#BEE8D5] rounded-xl"
+            />
+            <p className="text-red-500 text-sm">{errors.userName?.message}</p>
           </div>
 
-          <div className='InnerLoginDv  w-44 h-24 relative right-[450px] bottom-32'>
-            <p className='relative left-7 text-white font-light'>Welcome to the</p> <br/> <p className='relative bottom-6 font-semibold left-10 text-white'>Movie Kona </p> <br/>
-            <p className='relative bottom-12 left-4 text-white font-light font-sans'>We Made it for you</p>
-
-            <button className='border border-white w-28 h-9 rounded-4xl text-white relative hover:border-[#7AB41D] top-44 left-8'>LOGIN</button>
-            
-            <div className='w-96 h-80 relative left-64 bottom-44'>
-              <p className='font-extrabold text-[#0C270C] relative left-24 top-8'>Sign Up to Movie Kona </p>
-              <p className='relative top-15 left-7.5 '>Name</p>
-              <input className='w-40 h-7 relative top-15 left-6 bg-[#BEE8D5] rounded-3xl'></input>
-              <p className='absolute top-21 left-53'>UserName</p>
-              <input className='w-40 h-7 relative top-15 left-11  bg-[#BEE8D5] rounded-3xl'></input>
-              <p className='absolute top-36 left-8'>Email</p>
-              <input className='w-86 h-7 relative top-23 left-6  bg-[#BEE8D5] rounded-3xl'></input>
-              <p className='absolute top-51 left-8'>password</p>
-              <input className='w-86 h-7 relative top-31 left-6  bg-[#BEE8D5] rounded-3xl'></input>
-              <input type='checkbox' className='relative top-44 right-79'></input>
-              <span className='relative font-light top-37 left-12'>Creating an account your ok with the terms and contintion<br/> that i mention,service privacy policy</span>
-              <button className='bg-[#0C270C] w-25 h-7 rounded-3xl relative top-48 left-14 text-white '>SIGN IN</button>
-
-            </div>
-
+          {/* Email */}
+          <div>
+            <input
+              type="email"
+              placeholder="Email"
+              {...register("userEmail")}
+              className="w-full px-4 py-2 bg-[#BEE8D5] rounded-xl"
+            />
+            <p className="text-red-500 text-sm">{errors.userEmail?.message}</p>
           </div>
 
+          {/* Password */}
+          <div>
+            <input
+              type="password"
+              placeholder="Password"
+              {...register("password")}
+              className="w-full px-4 py-2 bg-[#BEE8D5] rounded-xl"
+            />
+            <p className="text-red-500 text-sm">{errors.password?.message}</p>
+          </div>
 
-          
-        </div>
-      </div> 
-    </>
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="w-full bg-[#0C270C] hover:bg-[#7AB41D] text-white py-2 rounded-xl"
+          >
+            SIGN IN
+          </button>
+        </form>
+      </div>
+    </div>
   );
 }
 

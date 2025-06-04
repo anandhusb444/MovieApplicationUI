@@ -3,13 +3,13 @@ import React from 'react'
 export default function NavBar1() {
   return (
     <div>
-      <nav>
-        <div>
-            <img/>
-            <button></button>
+      <nav className='flex justify-around items-center w-screen h-20 bg-[#0C270C]' >
+        <div className='flex justify-around align-middle '>
+            <img src='' alt='logo'/>
+            <button>ser</button>
         </div>
 
-        <div>
+        <div className='flex justify-around items-center'>
             <a>About</a>
             <a>Teams</a>
             <a>Fanart</a>

@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
+// Validation schema
 const schema = yup.object().shape({
   userName: yup.string().required("Enter your name"),
   userEmail: yup.string().email("Invalid email").required("Enter your email"),
@@ -17,83 +18,71 @@ function Login() {
   } = useForm({ resolver: yupResolver(schema) });
 
   const onSubmit = async (data) => {
-    try
-    {
+    try {
       console.log(data);
-      const respones = await fetch("https://localhost:7203/api/users/register",{
-        method : "POST",
-        headers : {"content-Type" : "application/json",},
-        body : JSON.stringify(data),
+      const response = await fetch("https://localhost:7203/api/users/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
       });
 
-      
-
-      if(respones.ok)
-      {
-        const result = await respones.json();
-        console.log("sucess", result);
+      if (response.ok) {
+        const result = await response.json();
+        console.log("Success", result);
+      } else {
+        const errorResult = await response.json();
+        console.log("Error", errorResult);
       }
-      else
-      {
-        const errorResult = await respones.json();
-        console.log("error", errorResult);
-      }
+    } catch (err) {
+      console.error("Network error", err);
     }
-    catch(err)
-    {
-      
-      console.error("Network error",err);
-    }
-    //console.log("Form Submitted:", data);
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-[#E1DFEA]">
-      <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-sm">
-        <h2 className="text-2xl font-semibold text-center text-[#0C270C] mb-6">Register to Movie Kona</h2>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          {/* Name */}
-          <div>
-            <input
-              type="text"
-              placeholder="Name"
-              {...register("userName")}
-              className="w-full px-4 py-2 bg-[#BEE8D5] rounded-xl"
-            />
-            <p className="text-red-500 text-sm">{errors.userName?.message}</p>
-          </div>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-full max-w-sm p-6 bg-white rounded-b-sm shadow-md"
+      >
+        <div>
+            <h2>Register</h2><br/>
+            <p>please enter your detiles</p>
+        </div>
 
-          {/* Email */}
-          <div>
-            <input
-              type="email"
-              placeholder="Email"
-              {...register("userEmail")}
-              className="w-full px-4 py-2 bg-[#BEE8D5] rounded-xl"
-            />
-            <p className="text-red-500 text-sm">{errors.userEmail?.message}</p>
-          </div>
+       
 
-          {/* Password */}
-          <div>
-            <input
-              type="password"
-              placeholder="Password"
-              {...register("password")}
-              className="w-full px-4 py-2 bg-[#BEE8D5] rounded-xl"
-            />
-            <p className="text-red-500 text-sm">{errors.password?.message}</p>
-          </div>
+        <div>
+          <label className='block'>User Name</label>
+          <input
+          type='text'
+          placeholder='Enter you user name'>
+          </input>
+        </div>
 
-          {/* Submit Button */}
-          <button
-            type="submit"
-            className="w-full bg-[#0C270C] hover:bg-[#7AB41D] text-white py-2 rounded-xl"
-          >
-            SIGN IN
-          </button>
-        </form>
-      </div>
+        <div>
+          <label className='block'>User Email</label>
+          <input
+          type='text'
+          placeholder='Enter your Email'>
+          </input>
+        </div>
+
+        <div >
+          <label className='block'>Password</label>
+          <input
+          type='text'
+          placeholder='Enter you Password'>
+          </input>
+        </div>
+      
+        
+
+        
+
+    
+
+      
+      </form>
     </div>
   );
 }

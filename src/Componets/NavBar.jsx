@@ -1,59 +1,33 @@
 import React from 'react'
 
-const NavBar = () => {
+export default function NavBar1() {
   return (
     <div>
-      <nav style={{backgroundColor: '#0C270C'}} className='h-18' >
-        <div className='flex p-4'>
-        <div className='text-white relative left-7 font-mono  '>Movie</div>
-        <div className='relative top-4 left-3 text-[#7AB41D] font-mono'>Kona</div>
-        <div className='relative left-20 top-0.5'>
-            <input type='text'
-            placeholder='Search'
-            className='rounded-lg border
-              h-8
-              w-63
-             border-gray-600
-              bg-white
-              text-white 
-              focus:outline-none 
-              focus:ring-2 focus:ring-blue-500"'
-              
-            >
-            </input>
+      <nav className='flex justify-around items-center w-screen h-20 bg-[#0C270C]' >
+        <div className='flex justify-around align-middle '>
+            <p className='text-white font-mono'>Movie</p>
+            <p className='text-[#7AB41D] font-mono relative top-3 right-4'>Kona</p>
+
+          <input
+              type='text'
+              placeholder='Search'
+              className='rounded-lg  border-white text-black px-2 bg-white w-50 h-7 ml-24 '>
+          </input>
         </div>
-        <div className='text-white relative left-90 p-2 hover:-translate-y-1 hover:text-[#ffd700] transition-transform duration-300 text-sm font-mono'>
-            About
+
+        <div className='flex justify-around items-center text-white gap-3.5 font-mono relative left-18'>
+            <a className='hover:-translate-y-1 hover:text-[#ffd700] transition-transform duration-300'>About</a>
+            <a className='hover:-translate-y-1 hover:text-[#ffd700] transition-transform duration-300'>Teams</a>
+            <a className='hover:-translate-y-1 hover:text-[#ffd700] transition-transform duration-300'>Fanart</a>
+            <a className='hover:-translate-y-1 hover:text-[#ffd700] transition-transform duration-300'>News</a>
         </div>
-        <div className='text-white relative left-90 p-2 hover:-translate-y-1 hover:text-[#ffd700] transition-transform duration-300 text-sm font-mono'>
-            Teams
+
+        <div className='flex justify-around items-center text-white gap-3.5 font-mono'>
+            <button className='text-[#7AB41D] bg-white w-23 h-8 rounded-2xl'>Profile</button>
+            <button className='bg-[#7AB41D] w-23 h-8 rounded-2xl'>LOGIN</button>
         </div>
-        <div className='text-white relative left-90 p-2 hover:-translate-y-1 hover:text-[#ffd700] transition-transform duration-300 text-sm font-mono'>
-          Fanart
-        </div>
-        <div className='text-white relative left-90 p-1 hover:-translate-y-1 hover:text-[#ffd700] transition-transform duration-300'>
-          <span className='font-mono text-sm '>
-              News
-          </span>
-        </div>
-        <div className='relative left-100 p-0.5'>
-            <button className='bg-white rounded-4xl border text-[#7AB41D] w-28 h-9 font-light' >
-              <span className="text-[#7AB41D] hover:text-[#0C270C] transition-colors duration-200 font-mono">
-                USER LOGIN
-              </span>
-            </button>
-        </div>
-        <div className='relative left-105 p-0.5'>
-            <button className='bg-[#7AB41D] rounded-4xl  text-white w-23 h-9 font-light font-mono'>
-                LOGO
-            </button>
-        </div>
-            
-        </div>
-       
+
       </nav>
     </div>
   )
 }
-
-export default NavBar

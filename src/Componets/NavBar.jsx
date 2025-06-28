@@ -1,6 +1,13 @@
 import React from 'react'
-
+import { useNavigate } from 'react-router-dom'
 export default function NavBar1() {
+
+  const navigation = useNavigate();
+
+    const HandleLoginClik = () =>{
+    navigation('login')
+  }
+
   return (
     <div>
       <nav className='flex justify-around items-center w-screen h-20 bg-[#0C270C]' >
@@ -24,7 +31,9 @@ export default function NavBar1() {
 
         <div className='flex justify-around items-center text-white gap-3.5 font-mono'>
             <button className='text-[#7AB41D] bg-white w-23 h-8 rounded-2xl'>Profile</button>
-            <button className='bg-[#7AB41D] w-23 h-8 rounded-2xl'>LOGIN</button>
+            <button 
+            onClick={HandleLoginClik}
+            className='bg-[#7AB41D] hover:text-[#0C270C] w-23 h-8 rounded-2xl'>LOGIN</button>
         </div>
 
       </nav>
